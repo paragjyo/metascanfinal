@@ -1,0 +1,336 @@
+{
+    "Bajali":
+        {
+            "1" : "NA"
+        },
+    "Baksa" :
+        {   "1" : "Gobardhan Development Block",
+            "2" : "Jalah Development Block",
+            "3" : "Barama Development Block",
+            "4" : "Tamulpur Development Block",
+            "5" : "Baksa Development Block"
+        },
+    "Biswanath" :
+        {
+            "1" : "NA"
+        },
+    "Bongaigaon" :
+        {
+            
+            "1" : "Dangtol Development Block",
+            "2" : "Tapattari Development Block",
+            "3" : "Srijangram Development Block",
+            "4" : "Boitamari Development Block",
+            "5" : "Manikpur Development Block",
+            "6" : "Borobazar Development Block"
+        },
+    "Borpeta" :
+        {
+            "1" : "Barpeta Development Block",
+            "2" : "Mondia Development Block",
+            "3" : "Chenga Development Block",
+            "4" : "Pakabetbari Development Block",
+            "5" : "Sarukhetri Development Block",
+            "6" : "Gumafulbari Development Block",
+            "7" : "Gobardhan Development Block",
+            "8" : "Rupsi Development Block",
+            "9" : "Chakchoka Development Block",
+            "10":"Jalah Development Block",
+            "11":"Bajali Development Block",
+            "12":"Bhawanipur Development Block"
+        },
+    "Cachar" :
+        {
+            "1" : "Silchar Development Block",
+            "2" : "Lakhipur Development Block",
+            "3" : "Sonai Development Block",
+            "4" : "Narsingpur Development Block",
+            "5" : "Palenghat Development Block",
+            "6" : "Kalain Development Block",
+            "7" : "Udarbond Development Block",
+            "8" : "Katigora Development Block",
+            "9" : "Salchapara Development Block",
+            "10": "Barjalenga Development Block",
+            "11": "Baskandi Development Block",
+            "12": "Binakandi Development Block",
+            "13": "Rajabazar Development Block",
+            "14": "Borkhola Development Block",
+            "15": "Tapang Development Block"
+        },
+    "Chirang" :
+        {
+            "1" : "Sidil Development Block"
+        },
+    "Charaideo":
+        {
+            "1" : "NA"
+        },
+    "Darrang" :
+        {
+            "1" : "Sipajhar Development Block",
+            "2" : "Pachim Mangaldoi Development Block",
+            "3" : "Pub Mangaldoi Development Block",
+            "4" : "Dalgaon Siyalmari Development Block",
+            "5" : "Basimari Development Block"
+        },
+    "Dhemaji" :
+        {
+            "1" : "Dhemaji Development Block",
+            "2" : "Bordoloni Development Block",
+            "3" : "Machkhowa Development Block",
+            "4" : "Sissiborgaon Development Block",
+            "5" : "Murkong Selleck Development Block"
+        },
+    "Dhubri" :
+        {
+            "1" : "Agomani Development Block",
+            "2" : "Gouripur Development Block",
+            "3" : "Bilasipara Development Block",
+            "4" : "Birsing Jarua Development Block",
+            "5" : "Chapar Salkocha Development Block",
+            "6" : "Debitola Development Block",
+            "7" : "Fekamari Development Block",
+            "8" : "Golakganj Development Block",
+            "9" : "Jamadarhat Development Block",
+            "10": "Mahamaya Development Block",
+            "11":"Mankachar Development Block",
+            "12":"Nayeralga Development Block",
+            "13":"Rupsi Development Block",
+            "14":"South Salamara Development Block"
+        },
+        
+    "Dibrugarh" :
+        {
+            "1" : "Khawang Development Block",
+            "2" : "Barbaruah Development Block",
+            "3" : "Panitola Development Block",
+            "4" : "Tengakhat Development Block",
+            "5" : "Jaipur Development Block",
+            "6" : "Tingkhong Development Block",
+            "7" : "Lahowal Development Block"
+        },
+    "Dima Hasao" :
+        {
+            "1" : "Maibong Development Block",
+            "2" : "Harangajao Development Block",
+            "3" : "Mahur Development Block",
+            "4" : "Maibong Development Block",
+            "5" : "Newsambar Development Block"
+        },
+    "Goalpara" :
+        {
+            "1" : "Rangjuli Development Block",
+            "2" : "Lakhipur Development Block",
+            "3" : "Kushdhowa Development Block",
+            "4" : "Krishnai Development Block",
+            "5" : "Matia Development Block",
+            "6" : "Balijana Development Block",
+            "7" : "Kharmuza Development Block",
+            "8" : "Jaleswar Development Block"
+            
+        },
+        
+    "Golaghat" :
+        {
+            "1" : "Golaghat West Development Block",
+            "2" : "Marangi Development Block",
+            "3" : "Golaghat South Development Block",
+            "4" : "Gomaiguri Development Block",
+            "5" : "Golaghat East Development Block",
+            "6" : "Golaghat Central Development Block",
+            "7" : "Golaghat North Development Block",
+            "8" : "Kakodonga Development Block"
+        },
+    "Hailakandi" :
+        {
+            "1" : "Algapur Development Block",
+            "2" : "Hailakandi Development Block",
+            "3" : "Lala Development Block",
+            "4" : "Katilicherra Development Block",
+            "5" : "South Hailakandi Development Block"
+        },
+    "Hojai" :
+        {
+            "1" : "NA"
+        },
+    "Jorhat" :
+        {
+             "1" : "Jorhat East Development Block",
+             "2" : "Majuli Development Block",
+             "3" : "Titabar Development Block",
+             "4" : "North West Jorhat Development Block",
+             "5" : "Baghehung Development Block",
+             "6" : "Central Jorhat Development Block",
+             "7" : "Kaliapani Development Block",
+             "8" : "Ujani Majuli Development Block"
+        },
+    "Kamrup" :
+        {
+            "1" : "Rani Development Block",
+            "2" : "Rampur Development Block",
+            "3" : "Chaygaon Development Block",
+            "4" : "Chayani Development Block",
+            "5" : "Goraimari Development Block",
+            "6" : "Bangaon Development Block",
+            "7" : "Boko Development Block",
+            "8" : "Chamaria Development Block",
+            "9" : "Hajo Development Block",
+            "10":"Sualkuchi Development Block",
+            "11":"Bezera Development Block",
+            "12":"Kamalpur Development Block",
+            "13":"Gureswar Development Block",
+            "14":"Rangia Development Block",
+            "15":"Bihdia Jajikona Development Block"
+        },
+    "Kamrup Metro" :
+        {
+            "1" : "Dimoria Development Block",
+            "2" : "Chandrapur Development Block"
+        },
+    "Karbi-Anglong" :
+        {
+            "1" : "Lumbajong Development Block",
+            "2" : "Langsomepi Development Block",
+            "3" : "Howraghat Development Block",
+            "4" : "Samelangso Development Block",
+            "5" : "Bokajan Development Block",
+            "6" : "Nilip Development Block",
+            "7" : "Rongmongwe Development Block",
+            "8" : "Rongkhong Development Block",
+            "9" : "Chintong Development Block",
+            "10": "Amri Development Block",
+            "11": "Socheng Development Block"
+            
+        },
+    "Karimganj" :
+        {
+            "1" : "North Karimganj Development Block",
+            "2" : "Badarpur Development Block",
+            "3" : "South Karimganj Development Block",
+            "4" : "Patharkandi Development Block",
+            "5" : "Lawaripur Development Block",
+            "6" : "Dullavchera Development Block",
+            "7" : "Ramkrishna Development Block"
+        },
+        
+    "Kokrajhar" :
+        {
+            "1" : "Kokrajhar Development Block",
+            "2" : "Gossaigaon Development Block",
+            "3" : "Dotma Development Block",
+            "4" : "Kachugaon Development Block",
+            "5" : "Hatidhora Development Block"
+        },
+    "Lakhimpur" :
+        {
+            "1" : "Narayanpur Development Block",
+            "2" : "Bihpuria Development Block",
+            "3" : "Karunabari Development Block",
+            "4" : "Nowboicha Development Block",
+            "5" : "Telahi Development Block",
+            "6" : "Lakhimpur Development Block",
+            "7" : "Baginadi Development Block",
+            "8" : "Ghilamari Development Block",
+            "9" : "Dhakuakhana Development Block"
+        },
+    "Majuli":
+        {
+            "1" : "NA"
+        },
+    "Morigaon" :
+        {
+            "1" : "Kapili Development Block",
+            "2" : "Moirabari Development Block",
+            "3" : "Laharighat Development Block",
+            "4" : "Mayong Development Block",
+            "5" : "Bhurabancha Development Block"    
+        },
+    "Nagaon" :
+        {
+            "1" : "Bajigaon Development Block",
+            "2" : "Barhampur Development Block",
+            "3" : "Batadraba Development Block",
+            "4" : "Binakandi Development Block",
+            "5" : "Bhalpukhuri Development Block",
+            "6" : "Dalanghat Development Block",
+            "7" : "Jugijan Development Block",
+            "8" : "Juria Development Block",
+            "9" : "Kaliabor Development Block",
+            "10": "Kathiatoli Development Block",
+            "11": "Khargarijan Development Block",
+            "12": "Lawkhowa Development Block",
+            "13": "Lamding Development Block",
+            "14": "Odali Development Block",
+            "15": "Paschim Kaliabor Development Block",
+            "16": "Pakhimora Development Block",
+            "17": "Raha Development Block",
+            "18": "Rupahihat Development Block"
+        },
+    "Nalbari" :
+        {
+            "1" : "Paschim Nalbari Development Block",
+            "2" : "Madhupur Development Block",
+            "3" : "Pub Nalbari Development Block",
+            "4" : "Borbhag Development Block",
+            "5" : "Barkhetri Development Block",
+            "6" : "Tihu Barama Development Block"
+        },
+        
+    "Sivasagar" :
+        {
+            "1" : "Sivasagar Development Block",
+            "2" : "Amguri Development Block",
+            "3" : "Dimow Development Block",
+            "4" : "Sonari Development Block",
+            "5" : "Sapekhati Development Block",
+            "6" : "Nazira Development Block",
+            "7" : "Lakua Development Block",
+            "8" : "West Abhayapuri Development Block",
+            "9" : "Gaurisagar Development Block"
+        },
+    "Sonitpur" :
+        {
+            "1" : "Borchola Development Block",
+            "2" : "Rangapara Development Block",
+            "3" : "Dhekiajuli Development Block",
+            "4" : "Bihaguri Development Block",
+            "5" : "Biswanath Development Block",
+            "6" : "Rangapara Development Block",
+            "7" : "Naduar Development Block",
+            "8" : "Sootia Development Block",
+            "9" : "Sakomotha Development Block",
+            "10": "Baghmara Development Block",
+            "11": "Behali Development Block",
+            "12": "Chaiduar Development Block",
+            "13": "Pub Chaiduar Development Block",
+            "14": "Balipara Development Block"    
+        },
+    "South Salamara Mankachar":
+        {
+            "1" : "NA"
+        },
+    "Tinsukia" :
+        {
+            "1" : "Guijan Development Block",
+            "2" : "Hapjan Development Block",
+            "3" : "Itakhuli Development Block",
+            "4" : "Kakopathar Development Block",
+            "5" : "Margherita Development Block",
+            "6" : "Chaikhowa Development Block",
+            "7" : "Chapakhowa Development Block"
+        },
+    "Udalguri" :
+        {
+            "1" : "Udalguri Development Block",
+            "2" : "Rowta Development Block",
+            "3" : "Majbat Development Block",
+            "4" : "Bhergaon Development Block",
+            "5" : "Khairabari Development Block",
+            "6" : "Kolaigaon Development Block"
+        },
+    
+    "West Karbi-Anglong":
+        {
+            "1" : "NA"
+        }
+}

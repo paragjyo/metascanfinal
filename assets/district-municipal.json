@@ -1,0 +1,203 @@
+{
+    "Bajali":
+        {
+            "1" : "NA"
+        },
+    "Baksa" :
+        {"1": "Goreswar Municipality board"},
+    "Biswanath" :
+        {
+            "1" : "NA"
+        },
+    "Bongaigaon" :
+        {
+            
+            "1" : "bongaigaon Municipality board",
+            "2" : "abhayapuri Town committee"
+        },
+    "Borpeta" :
+        {
+            "1" : "Barpeta Municipality board",
+            "2" : "Barpeta Road Municipality board",
+            "3" : "Howli Town committee",
+            "4" : "Sarthebari Town committee",
+            "5": "Pathsala Town committee",
+            "6" : "Sarbhog Town committee"
+        },
+    "Cachar" :
+        {
+            "1" : "Silchar Municipality board",
+            "2" : "Lakhipur Town committee"
+        },
+    "Chirang" :
+        {
+            "1" : "Basugaon Town committee",
+            "2" : "Bijni Town committee"
+        },
+    "Charaideo":
+        {
+            "1" : "NA"
+        },
+    "Darrang" :
+        {
+            "1" : "Mangaldoi Municipality board",
+            "2" : "Kharupetia Town committee",
+            "3" : "Namkhola Town committee",
+            "4" : "Duni Town committee"
+        },
+    "Dhemaji" :
+        {
+            "1" : "Dhemaji Town committee",
+            "2" : "Silapathar Town committee"
+        },
+    "Dhubri" :
+        {
+            "1" : "Dhubri Municipality",
+            "2" : "Gouripur Town committee",
+            "3" : "Sapatgram Town committee",
+            "4" : "Bilasipara Town committee",
+            "5" : "Chapar Town committee"
+        },
+        
+    "Dibrugarh" :
+        {
+            "1" : "Dibrugarh Municipality",
+            "2" : "Naharkatia Town committee",
+            "3" : "Chabua Town committee"
+        },
+    "Dima Hasao" :
+        {
+            "1" : "Haflong Town committee",
+            "2" : "Umrangsu Town committee",
+            "3" : "Mahur Town committee",
+            "4" : "Maibong Town committee"
+        },
+    "Goalpara" :
+        {
+            "1" : "Goalpara Municipality board",
+            "2" : "Lakhipur Town committee"
+            
+        },
+        
+    "Golaghat" :
+        {
+            "1" : "Golaghat Municipality board",
+            "2" : "Dergaon Town committee",
+            "3" : "Bokakhat Town committee",
+            "4" : "Sarupathar Town committee",
+            "5" : "Borpathar Town committee"
+        },
+    "Hailakandi" :
+        {
+            "1" : "Hailakandi Municipality board",
+            "2" : "lala Town committee"
+        },
+    "Hojai" :
+        {
+            "1" : "NA"
+        },
+    "Jorhat" :
+        {
+             "1" : "Jorhat Municipality board",
+             "2" : "Mariani Town committee"
+        },
+    "Kamrup" :
+        {
+            "1" : "Rangia Municipality board",
+            "2" : "Palashbari Municipality board"
+        },
+    "Kamrup Metro" :
+        {
+            "1" : "Guwahati Municipality corporation",
+            "2" : "North Guwahati Town committee"
+        },
+     "Karbi-Anglong" :
+        {
+            "1" : "Diphu Town committee",
+            "2" : "Dokmoka Town committee",
+            "3" : "Howraghat Town committee",
+            "4" : "Bokajan Town committee",
+            "5" : "Hamren Town committee",
+            "6" : "Donkamokam Town committee"
+            
+        },
+    "Karimganj" :
+        {
+            "1" : "Karimganj Municipality board",
+            "2" : "Badarpur Town committee"
+        },
+        
+    "Kokrajhar" :
+        {
+            "1" : "Kokrajhar Municipality board",
+            "2" : "Gossaigaon Town committee"
+        },
+    "Lakhimpur" :
+        {
+            "1" : "North Lakhimpur Municipality board",
+            "2" : "Bihpuria Town committee"
+        },
+    "Majuli":
+        {
+            "1" : "NA"
+        },
+    "Morigaon" :
+        {
+            "1" : "Morigaon Municipality board"    
+        },
+    "Nagaon" :
+        {
+            "1" : "Nagaon Municipality board",
+            "2" : "Kampur Town committee",
+            "3" : "Roha Town committee",
+            "4" : "Doboka Town committee"
+        },
+    "Nalbari" :
+        {
+            "1" : "Nalbari Municipality board",
+            "2" : "Tihu Town committee"
+        },
+    
+   
+        
+    "Sivasagar" :
+        {
+            "1" : "Sivasagar Municipality board",
+            "2" : "Amguri Town committee",
+            "3" : "Simaluguri Town committee",
+            "4" : "Sonari Municipality board",
+            "5" : "Moranhat Town committee",
+            "6" : "Nazira Municipality board"
+        },
+    "Sonitpur" :
+        {
+            "1" : "Tezpur Municipality board",
+            "2" : "Rangapara Town committee",
+            "3" : "Dhekiajuli Municipality board",
+            "4" : "Gohpur Town committee",
+            "5" : "Biswanath Chariali Municipality board",
+            "6" : "Gohpur Town committee"    
+        },
+    "South Salamara Mankachar":
+        {
+            "1" : "NA"
+        },
+    "Tinsukia" :
+        {
+            "1" : "Tinsukia Municipality board",
+            "2" : "Digboi Municipality",
+            "3" : "Margherita Town committee",
+            "4" : "Doomdooma Town committee",
+            "5" : "Makum Town committee"
+        },
+    "Udalguri" :
+        {
+            "1" : "Odalguri Municipality board",
+            "2" : "Tangla Municipality board"
+        },
+    
+    "West Karbi-Anglong":
+        {
+            "1" : "NA"
+        }
+}
