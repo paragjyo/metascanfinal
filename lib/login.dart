@@ -99,8 +99,11 @@ class _LoginModalSheetState extends State<LoginModalSheet> {
           children: [
             SizedBox(height: 50.0),
             TextField(
+              keyboardType: TextInputType.number,
+              maxLength: 10,
               controller: _usernameController,
               decoration: InputDecoration(
+                counterText: "",
                 filled: true,
                 fillColor: Colors.grey[200],
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),

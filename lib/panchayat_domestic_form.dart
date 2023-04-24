@@ -35,6 +35,7 @@ class _PanchayatDomesticState extends State<PanchayatDomestic> {
   bool _isProcessing = false;
   // final _formKey = GlobalKey<FormState>();
   List<GlobalKey<FormState>> _formKeys = [GlobalKey<FormState>(), GlobalKey<FormState>(), GlobalKey<FormState>(), GlobalKey<FormState>()];
+  GlobalKey<FormState> _formKeyDropdown = GlobalKey<FormState>();
   bool _isResizedPhoto = false;
   bool _isResizedNameplatePhoto = false;
   bool _storagePermissionGranted = false;
@@ -223,7 +224,14 @@ class _PanchayatDomesticState extends State<PanchayatDomestic> {
 
   ////Image variables
 
-  final TextEditingController _controller2 = TextEditingController();
+  final TextEditingController _controllerForTotal = TextEditingController();
+  final TextEditingController _controllerForTotalBelow5 = TextEditingController();
+  final TextEditingController _controllerForTotalAbove60 = TextEditingController();
+  final TextEditingController _controllerForTotalLiterate = TextEditingController();
+  final TextEditingController _controllerForTotalIlliterate = TextEditingController();
+  final TextEditingController _controllerForTotalHandicapped = TextEditingController();
+  final TextEditingController _controllerForTotalGovtEarningMember = TextEditingController();
+  final TextEditingController _controllerForTotalPrivateEarningMember = TextEditingController();
 
   // For all the variable of Form
   int idTaken = 0;
@@ -819,32 +827,32 @@ collectorNumber TEXT DEFAULT NULL);
 
   // IMAGE UPLOAD WITH CAMERA AND FRM GALLERY
 
-  Future<void> _saveSignature() async {
-    final databaseSign = await getDatabasePath();
-    print(databaseSign);
+  // Future<void> _saveSignature() async {
+  //   final databaseSign = await getDatabasePath();
+  //   print(databaseSign);
 
-    final database = await openDatabase(
-      databaseSign,
-      onCreate: (db, version) {
-        return db.transaction((txn) async {
-          // create the table if it does not already exist
-          await txn.execute(
-            "CREATE TABLE IF NOT EXISTS signatures(id INTEGER PRIMARY KEY,path TEXT);",
-          );
-        });
-      },
-      version: 1,
-    );
+  //   final database = await openDatabase(
+  //     databaseSign,
+  //     onCreate: (db, version) {
+  //       return db.transaction((txn) async {
+  //         // create the table if it does not already exist
+  //         await txn.execute(
+  //           "CREATE TABLE IF NOT EXISTS signatures(id INTEGER PRIMARY KEY,path TEXT);",
+  //         );
+  //       });
+  //     },
+  //     version: 1,
+  //   );
 
-    print(database);
-    await database.insert(
-      'signatures',
-      {'path': signaturePath},
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+  //   print(database);
+  //   await database.insert(
+  //     'signatures',
+  //     {'path': signaturePath},
+  //     conflictAlgorithm: ConflictAlgorithm.replace,
+  //   );
 
-    await database.close(); // close the database after inserting data
-  }
+  //   await database.close(); // close the database after inserting data
+  // }
 
   @override
   void initState() {
@@ -951,21 +959,38 @@ collectorNumber TEXT DEFAULT NULL);
                                             borderSide: BorderSide.none,
                                           ),
                                         ),
-                                        value: _selectedDistrict,
-                                        items: _districts.map((district) {
-                                          return DropdownMenuItem<String>(
-                                            value: district,
-                                            child: Text(district),
-                                          );
-                                        }).toList(),
+                                        items: [
+                                          DropdownMenuItem(
+                                            child: Text('Select District'),
+                                            value: null,
+                                          ),
+                                          ..._districts.map((district) {
+                                            return DropdownMenuItem<String>(
+                                              value: district,
+                                              child: Text(district),
+                                            );
+                                          }).toList(),
+                                        ],
                                         onChanged: (value) {
                                           setState(() {
                                             _selectedDistrict = value!;
-                                            _blocks = List<String>.from(globalJson[_selectedDistrict].values);
-                                            _selectedBlock = _blocks[0];
+                                            if (globalJson.containsKey(_selectedDistrict)) {
+                                              _blocks = List<String>.from(globalJson[_selectedDistrict].values);
+                                              _blocks = _blocks.toSet().toList(); // Remove duplicates
+                                              _selectedBlock = _blocks[0];
+                                            } else {
+                                              _blocks = [];
+                                              _selectedBlock = "Select Distric First";
+                                            }
                                           });
                                           print(_selectedDistrict);
                                           _district = _selectedDistrict;
+                                        },
+                                        validator: (value) {
+                                          if (value == null) {
+                                            return 'Please select a district';
+                                          }
+                                          return null;
                                         },
                                       ),
                                       SizedBox(height: 16.0),
@@ -991,6 +1016,12 @@ collectorNumber TEXT DEFAULT NULL);
                                           });
                                           print(_selectedBlock);
                                           _block_development_office = _selectedBlock;
+                                        },
+                                        validator: (value) {
+                                          if (value == null) {
+                                            return 'Please select a Block';
+                                          }
+                                          return null;
                                         },
                                       ),
                                       SizedBox(
@@ -1250,7 +1281,7 @@ collectorNumber TEXT DEFAULT NULL);
                                                 _number_of_female = value as String;
                                                 int total = int.parse(_number_of_male) + int.parse(_number_of_female);
                                                 _number_of_male_female_total = total.toString();
-                                                _controller2.text = total.toString();
+                                                _controllerForTotal.text = total.toString();
                                               }),
                                         ),
                                         SizedBox(
@@ -1273,7 +1304,7 @@ collectorNumber TEXT DEFAULT NULL);
                                                 }
                                                 return null;
                                               },
-                                              controller: _controller2,
+                                              controller: _controllerForTotal,
                                               onChanged: (value) {
                                                 _number_of_male_female_total = value as String;
                                               }),
@@ -1333,6 +1364,9 @@ collectorNumber TEXT DEFAULT NULL);
                                               },
                                               onChanged: (value) {
                                                 _number_of_female_below_5 = value as String;
+                                                int total = int.parse(_number_of_male_below_5) + int.parse(_number_of_female_below_5);
+                                                _number_of_male_female_total_below_5 = total.toString();
+                                                _controllerForTotalBelow5.text = total.toString();
                                               }),
                                         ),
                                         SizedBox(
@@ -1340,6 +1374,7 @@ collectorNumber TEXT DEFAULT NULL);
                                         ),
                                         Flexible(
                                           child: TextFormField(
+                                              enabled: false,
                                               keyboardType: TextInputType.number,
                                               decoration: InputDecoration(
                                                 filled: true,
@@ -1354,6 +1389,7 @@ collectorNumber TEXT DEFAULT NULL);
                                                 }
                                                 return null;
                                               },
+                                              controller: _controllerForTotalBelow5,
                                               onChanged: (value) {
                                                 _number_of_male_female_total_below_5 = value as String;
                                               }),
@@ -1397,29 +1433,34 @@ collectorNumber TEXT DEFAULT NULL);
                                         ),
                                         Flexible(
                                           child: TextFormField(
-                                              keyboardType: TextInputType.number,
-                                              decoration: InputDecoration(
-                                                filled: true,
-                                                fillColor: Colors.grey[200],
-                                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
-                                                labelText: 'Female',
-                                                hintStyle: TextStyle(color: Colors.grey[500]),
-                                              ),
-                                              validator: (value) {
-                                                if (value?.isEmpty ?? true) {
-                                                  return "fill";
-                                                }
-                                                return null;
-                                              },
-                                              onChanged: (value) {
-                                                _number_of_female_above_60 = value as String;
-                                              }),
+                                            keyboardType: TextInputType.number,
+                                            decoration: InputDecoration(
+                                              filled: true,
+                                              fillColor: Colors.grey[200],
+                                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
+                                              labelText: 'Female',
+                                              hintStyle: TextStyle(color: Colors.grey[500]),
+                                            ),
+                                            validator: (value) {
+                                              if (value?.isEmpty ?? true) {
+                                                return "fill";
+                                              }
+                                              return null;
+                                            },
+                                            onChanged: (value) {
+                                              _number_of_female_above_60 = value as String;
+                                              int total = int.parse(_number_of_male_above_60) + int.parse(_number_of_female_above_60);
+                                              _number_of_male_female_total_above_60 = total.toString();
+                                              _controllerForTotalAbove60.text = total.toString();
+                                            },
+                                          ),
                                         ),
                                         SizedBox(
                                           width: 10,
                                         ),
                                         Flexible(
                                           child: TextFormField(
+                                              enabled: false,
                                               keyboardType: TextInputType.number,
                                               decoration: InputDecoration(
                                                 filled: true,
@@ -1434,6 +1475,7 @@ collectorNumber TEXT DEFAULT NULL);
                                                 }
                                                 return null;
                                               },
+                                              controller: _controllerForTotalAbove60,
                                               onChanged: (value) {
                                                 _number_of_male_female_total_above_60 = value as String;
                                               }),
@@ -1474,29 +1516,34 @@ collectorNumber TEXT DEFAULT NULL);
                                         ),
                                         Flexible(
                                           child: TextFormField(
-                                              keyboardType: TextInputType.number,
-                                              decoration: InputDecoration(
-                                                filled: true,
-                                                fillColor: Colors.grey[200],
-                                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
-                                                labelText: 'Female',
-                                                hintStyle: TextStyle(color: Colors.grey[500]),
-                                              ),
-                                              validator: (value) {
-                                                if (value?.isEmpty ?? true) {
-                                                  return "fill";
-                                                }
-                                                return null;
-                                              },
-                                              onChanged: (value) {
-                                                _number_of_literate_female = value as String;
-                                              }),
+                                            keyboardType: TextInputType.number,
+                                            decoration: InputDecoration(
+                                              filled: true,
+                                              fillColor: Colors.grey[200],
+                                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
+                                              labelText: 'Female',
+                                              hintStyle: TextStyle(color: Colors.grey[500]),
+                                            ),
+                                            validator: (value) {
+                                              if (value?.isEmpty ?? true) {
+                                                return "fill";
+                                              }
+                                              return null;
+                                            },
+                                            onChanged: (value) {
+                                              _number_of_literate_female = value as String;
+                                              int total = int.parse(_number_of_literate_male) + int.parse(_number_of_literate_female);
+                                              _number_of_male_female_total_literate = total.toString();
+                                              _controllerForTotalLiterate.text = total.toString();
+                                            },
+                                          ),
                                         ),
                                         SizedBox(
                                           width: 10,
                                         ),
                                         Flexible(
                                           child: TextFormField(
+                                              enabled: false,
                                               keyboardType: TextInputType.number,
                                               decoration: InputDecoration(
                                                 filled: true,
@@ -1511,6 +1558,7 @@ collectorNumber TEXT DEFAULT NULL);
                                                 }
                                                 return null;
                                               },
+                                              controller: _controllerForTotalLiterate,
                                               onChanged: (value) {
                                                 _number_of_male_female_total_literate = value as String;
                                               }),
@@ -1551,29 +1599,34 @@ collectorNumber TEXT DEFAULT NULL);
                                         ),
                                         Flexible(
                                           child: TextFormField(
-                                              keyboardType: TextInputType.number,
-                                              decoration: InputDecoration(
-                                                filled: true,
-                                                fillColor: Colors.grey[200],
-                                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
-                                                labelText: 'Female',
-                                                hintStyle: TextStyle(color: Colors.grey[500]),
-                                              ),
-                                              validator: (value) {
-                                                if (value?.isEmpty ?? true) {
-                                                  return "fill";
-                                                }
-                                                return null;
-                                              },
-                                              onChanged: (value) {
-                                                _number_of_illiterate_female = value as String;
-                                              }),
+                                            keyboardType: TextInputType.number,
+                                            decoration: InputDecoration(
+                                              filled: true,
+                                              fillColor: Colors.grey[200],
+                                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
+                                              labelText: 'Female',
+                                              hintStyle: TextStyle(color: Colors.grey[500]),
+                                            ),
+                                            validator: (value) {
+                                              if (value?.isEmpty ?? true) {
+                                                return "fill";
+                                              }
+                                              return null;
+                                            },
+                                            onChanged: (value) {
+                                              _number_of_illiterate_female = value as String;
+                                              int total = int.parse(_number_of_illiterate_male) + int.parse(_number_of_illiterate_female);
+                                              _number_of_male_female_total_illiterate = total.toString();
+                                              _controllerForTotalIlliterate.text = total.toString();
+                                            },
+                                          ),
                                         ),
                                         SizedBox(
                                           width: 10,
                                         ),
                                         Flexible(
                                           child: TextFormField(
+                                              enabled: false,
                                               keyboardType: TextInputType.number,
                                               decoration: InputDecoration(
                                                 filled: true,
@@ -1588,6 +1641,7 @@ collectorNumber TEXT DEFAULT NULL);
                                                 }
                                                 return null;
                                               },
+                                              controller: _controllerForTotalIlliterate,
                                               onChanged: (value) {
                                                 _number_of_male_female_total_illiterate = value as String;
                                               }),
@@ -1628,29 +1682,34 @@ collectorNumber TEXT DEFAULT NULL);
                                         ),
                                         Flexible(
                                           child: TextFormField(
-                                              keyboardType: TextInputType.number,
-                                              decoration: InputDecoration(
-                                                filled: true,
-                                                fillColor: Colors.grey[200],
-                                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
-                                                labelText: 'Mentally',
-                                                hintStyle: TextStyle(color: Colors.grey[500]),
-                                              ),
-                                              validator: (value) {
-                                                if (value?.isEmpty ?? true) {
-                                                  return "fill";
-                                                }
-                                                return null;
-                                              },
-                                              onChanged: (value) {
-                                                _no_of_handicapped_persons_mentally = value as String;
-                                              }),
+                                            keyboardType: TextInputType.number,
+                                            decoration: InputDecoration(
+                                              filled: true,
+                                              fillColor: Colors.grey[200],
+                                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
+                                              labelText: 'Mentally',
+                                              hintStyle: TextStyle(color: Colors.grey[500]),
+                                            ),
+                                            validator: (value) {
+                                              if (value?.isEmpty ?? true) {
+                                                return "fill";
+                                              }
+                                              return null;
+                                            },
+                                            onChanged: (value) {
+                                              _no_of_handicapped_persons_mentally = value as String;
+                                              int total = int.parse(_no_of_handicapped_persons_physically) + int.parse(_no_of_handicapped_persons_mentally);
+                                              _no_of_handicapped_persons_total = total.toString();
+                                              _controllerForTotalHandicapped.text = total.toString();
+                                            },
+                                          ),
                                         ),
                                         SizedBox(
                                           width: 10,
                                         ),
                                         Flexible(
                                           child: TextFormField(
+                                              enabled: false,
                                               keyboardType: TextInputType.number,
                                               decoration: InputDecoration(
                                                 filled: true,
@@ -1665,6 +1724,7 @@ collectorNumber TEXT DEFAULT NULL);
                                                 }
                                                 return null;
                                               },
+                                              controller: _controllerForTotalHandicapped,
                                               onChanged: (value) {
                                                 _no_of_handicapped_persons_total = value as String;
                                               }),
@@ -1693,6 +1753,12 @@ collectorNumber TEXT DEFAULT NULL);
                                         });
                                       },
                                       hint: Text('Family Identification Certificate'),
+                                      validator: (value) {
+                                        if (value == null) {
+                                          return 'Please select an option';
+                                        }
+                                        return null;
+                                      },
                                     ),
                                     SizedBox(
                                       height: 10,
@@ -1716,6 +1782,12 @@ collectorNumber TEXT DEFAULT NULL);
                                         });
                                       },
                                       hint: Text('Access to welfare benifits'),
+                                      validator: (value) {
+                                        if (value == null) {
+                                          return 'Please select an option';
+                                        }
+                                        return null;
+                                      },
                                     ),
                                     SizedBox(
                                       height: 10,
@@ -1739,6 +1811,12 @@ collectorNumber TEXT DEFAULT NULL);
                                         });
                                       },
                                       hint: Text('Caste'),
+                                      validator: (value) {
+                                        if (value == null) {
+                                          return 'Please select an option';
+                                        }
+                                        return null;
+                                      },
                                     ),
                                     SizedBox(
                                       height: 10,
@@ -1762,6 +1840,12 @@ collectorNumber TEXT DEFAULT NULL);
                                         });
                                       },
                                       hint: Text('Religion'),
+                                      validator: (value) {
+                                        if (value == null) {
+                                          return 'Please select an option';
+                                        }
+                                        return null;
+                                      },
                                     ),
                                   ],
                                 ),
@@ -1833,6 +1917,12 @@ collectorNumber TEXT DEFAULT NULL);
                                         });
                                       },
                                       hint: Text('Structure of house'),
+                                      validator: (value) {
+                                        if (value == null) {
+                                          return 'Please select an option';
+                                        }
+                                        return null;
+                                      },
                                     ),
                                     SizedBox(
                                       height: 10,
@@ -1856,6 +1946,12 @@ collectorNumber TEXT DEFAULT NULL);
                                         });
                                       },
                                       hint: Text('House lighting'),
+                                      validator: (value) {
+                                        if (value == null) {
+                                          return 'Please select an option';
+                                        }
+                                        return null;
+                                      },
                                     ),
                                     SizedBox(
                                       height: 10,
@@ -1879,6 +1975,12 @@ collectorNumber TEXT DEFAULT NULL);
                                         });
                                       },
                                       hint: Text('Fuel of cooking'),
+                                      validator: (value) {
+                                        if (value == null) {
+                                          return 'Please select an option';
+                                        }
+                                        return null;
+                                      },
                                     ),
                                     SizedBox(
                                       height: 10,
@@ -1902,6 +2004,12 @@ collectorNumber TEXT DEFAULT NULL);
                                         });
                                       },
                                       hint: Text('Source of drinking water'),
+                                      validator: (value) {
+                                        if (value == null) {
+                                          return 'Please select an option';
+                                        }
+                                        return null;
+                                      },
                                     ),
                                     SizedBox(
                                       height: 10,
@@ -1925,6 +2033,12 @@ collectorNumber TEXT DEFAULT NULL);
                                         });
                                       },
                                       hint: Text('Existence of toilet facility'),
+                                      validator: (value) {
+                                        if (value == null) {
+                                          return 'Please select an option';
+                                        }
+                                        return null;
+                                      },
                                     ),
                                     SizedBox(
                                       height: 10,
@@ -1948,6 +2062,12 @@ collectorNumber TEXT DEFAULT NULL);
                                         });
                                       },
                                       hint: Text('Land Tenure'),
+                                      validator: (value) {
+                                        if (value == null) {
+                                          return 'Please select an option';
+                                        }
+                                        return null;
+                                      },
                                     ),
                                   ],
                                 ),
@@ -1987,7 +2107,7 @@ collectorNumber TEXT DEFAULT NULL);
                                                 return null;
                                               },
                                               onChanged: (value) {
-                                                _number_of_male = value as String;
+                                                _number_of_govt_earning_adult_members_male = value as String;
                                               }),
                                         ),
                                         SizedBox(
@@ -1995,22 +2115,26 @@ collectorNumber TEXT DEFAULT NULL);
                                         ),
                                         Flexible(
                                           child: TextFormField(
-                                              decoration: InputDecoration(
-                                                filled: true,
-                                                fillColor: Colors.grey[200],
-                                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
-                                                labelText: 'Female',
-                                                hintStyle: TextStyle(color: Colors.grey[500]),
-                                              ),
-                                              validator: (value) {
-                                                if (value?.isEmpty ?? true) {
-                                                  return "fill";
-                                                }
-                                                return null;
-                                              },
-                                              onChanged: (value) {
-                                                _number_of_female = value as String;
-                                              }),
+                                            decoration: InputDecoration(
+                                              filled: true,
+                                              fillColor: Colors.grey[200],
+                                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
+                                              labelText: 'Female',
+                                              hintStyle: TextStyle(color: Colors.grey[500]),
+                                            ),
+                                            validator: (value) {
+                                              if (value?.isEmpty ?? true) {
+                                                return "fill";
+                                              }
+                                              return null;
+                                            },
+                                            onChanged: (value) {
+                                              _number_of_govt_earning_adult_members_female = value as String;
+                                              int total = int.parse(_number_of_govt_earning_adult_members_male) + int.parse(_number_of_govt_earning_adult_members_female);
+                                              _number_of_govt_earning_adult_members_total = total.toString();
+                                              _controllerForTotalGovtEarningMember.text = total.toString();
+                                            },
+                                          ),
                                         ),
                                         SizedBox(
                                           width: 10,
@@ -2030,8 +2154,9 @@ collectorNumber TEXT DEFAULT NULL);
                                                 }
                                                 return null;
                                               },
+                                              controller: _controllerForTotalGovtEarningMember,
                                               onChanged: (value) {
-                                                _number_of_male_female_total = value as String;
+                                                _number_of_male_female_total_illiterate = value as String;
                                               }),
                                         ),
                                       ],
@@ -2067,7 +2192,7 @@ collectorNumber TEXT DEFAULT NULL);
                                                 return null;
                                               },
                                               onChanged: (value) {
-                                                _number_of_male = value as String;
+                                                _number_of_privale_earning_adult_members_male = value as String;
                                               }),
                                         ),
                                         SizedBox(
@@ -2075,22 +2200,26 @@ collectorNumber TEXT DEFAULT NULL);
                                         ),
                                         Flexible(
                                           child: TextFormField(
-                                              decoration: InputDecoration(
-                                                filled: true,
-                                                fillColor: Colors.grey[200],
-                                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
-                                                labelText: 'Female',
-                                                hintStyle: TextStyle(color: Colors.grey[500]),
-                                              ),
-                                              validator: (value) {
-                                                if (value?.isEmpty ?? true) {
-                                                  return "fill";
-                                                }
-                                                return null;
-                                              },
-                                              onChanged: (value) {
-                                                _number_of_female = value as String;
-                                              }),
+                                            decoration: InputDecoration(
+                                              filled: true,
+                                              fillColor: Colors.grey[200],
+                                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
+                                              labelText: 'Female',
+                                              hintStyle: TextStyle(color: Colors.grey[500]),
+                                            ),
+                                            validator: (value) {
+                                              if (value?.isEmpty ?? true) {
+                                                return "fill";
+                                              }
+                                              return null;
+                                            },
+                                            onChanged: (value) {
+                                              _number_of_privale_earning_adult_members_female = value as String;
+                                              int total = int.parse(_number_of_privale_earning_adult_members_male) + int.parse(_number_of_privale_earning_adult_members_female);
+                                              _number_of_privale_earning_adult_members_total = total.toString();
+                                              _controllerForTotalPrivateEarningMember.text = total.toString();
+                                            },
+                                          ),
                                         ),
                                         SizedBox(
                                           width: 10,
@@ -2110,8 +2239,9 @@ collectorNumber TEXT DEFAULT NULL);
                                                 }
                                                 return null;
                                               },
+                                              controller: _controllerForTotalPrivateEarningMember,
                                               onChanged: (value) {
-                                                _number_of_male_female_total = value as String;
+                                                _number_of_privale_earning_adult_members_total = value as String;
                                               }),
                                         ),
                                       ],
@@ -2138,6 +2268,12 @@ collectorNumber TEXT DEFAULT NULL);
                                         });
                                       },
                                       hint: Text('Other source of income'),
+                                      validator: (value) {
+                                        if (value == null) {
+                                          return 'Please select an option';
+                                        }
+                                        return null;
+                                      },
                                     ),
                                   ],
                                 ),
@@ -2176,8 +2312,8 @@ collectorNumber TEXT DEFAULT NULL);
                                               exportedSignImage = bytes;
                                               signaturePath = file.path;
                                             });
-                                            _saveSignature();
-                                            _imageSign = await _resizeImage(file, 150);
+
+                                            // _imageSign = await _resizeImage(file, 150);
                                             print(_imageSign);
                                             print(globalJson);
                                           },
